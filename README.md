@@ -86,9 +86,10 @@ uv run ctf-solve --coordinator claude ...
 uv run ctf-solve --coordinator codex ...
 ```
 # Ollama (local) coordinator
-# Uses a locally-hosted Ollama instance (HTTP /api/generate). Example:
-#
-# uv run ctf-solve --coordinator ollama --coordinator-model "gemma4:31b" ...
+Uses a locally-hosted Ollama instance (HTTP /api/generate). Example:
+```bash
+uv run ctf-solve --coordinator ollama --coordinator-model "gemma4:31b" ...
+```
 
 ## Solver Models
 
