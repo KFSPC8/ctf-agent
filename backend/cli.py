@@ -37,7 +37,7 @@ def _setup_logging(verbose: bool = False) -> None:
 @click.option("--challenges-dir", default="challenges", help="Directory for challenge files")
 @click.option("--no-submit", is_flag=True, help="Dry run — don't submit flags")
 @click.option("--coordinator-model", default=None, help="Model for coordinator (default: claude-opus-4-6)")
-@click.option("--coordinator", default="claude", type=click.Choice(["claude", "codex"]), help="Coordinator backend")
+@click.option("--coordinator", default="claude", type=click.Choice(["claude", "codex", "ollama"]), help="Coordinator backend")
 @click.option("--max-challenges", default=10, type=int, help="Max challenges solved concurrently")
 @click.option("--msg-port", default=0, type=int, help="Operator message port (0 = auto)")
 @click.option("-v", "--verbose", is_flag=True, help="Verbose logging")
@@ -165,6 +165,16 @@ async def _run_coordinator(
     if coordinator_backend == "codex":
         from backend.agents.codex_coordinator import run_codex_coordinator
         results = await run_codex_coordinator(
+            settings=settings,
+            model_specs=model_specs,
+            challenges_root=challenges_dir,
+            no_submit=no_submit,
+            coordinator_model=coordinator_model,
+            msg_port=msg_port,
+        )
+    elif coordinator_backend == "ollama":
+        from backend.agents.ollama_coordinator import run_ollama_coordinator
+        results = await run_ollama_coordinator(
             settings=settings,
             model_specs=model_specs,
             challenges_root=challenges_dir,

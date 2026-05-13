@@ -16,6 +16,9 @@ class Settings(BaseSettings):
     anthropic_api_key: str = ""
     openai_api_key: str = ""
     gemini_api_key: str = ""
+    # Ollama (local)
+    ollama_url: str = "http://localhost:11434"
+    ollama_default_model: str = "gemma4:31b"
 
     # Provider-specific (optional, for Bedrock/Azure/Zen fallback)
     aws_region: str = "us-east-1"

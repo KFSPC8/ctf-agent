@@ -85,6 +85,10 @@ uv run ctf-solve --coordinator claude ...
 # Codex coordinator (GPT-5.4 via JSON-RPC)
 uv run ctf-solve --coordinator codex ...
 ```
+# Ollama (local) coordinator
+# Uses a locally-hosted Ollama instance (HTTP /api/generate). Example:
+#
+# uv run ctf-solve --coordinator ollama --coordinator-model "gemma4:31b" ...
 
 ## Solver Models
 
@@ -97,6 +101,7 @@ Default model lineup (configurable in `backend/models.py`):
 | GPT-5.4 | Codex | Best overall solver |
 | GPT-5.4-mini | Codex | Fast, good for easy challenges |
 | GPT-5.3-codex | Codex | Reasoning model (xhigh effort) |
+| gemma4:31b | Ollama (local) | Run a locally-hosted Ollama model via HTTP |
 
 ## Sandbox Tooling
 
